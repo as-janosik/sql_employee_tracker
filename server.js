@@ -1,8 +1,6 @@
 const express = require('express');
 const sequelize = require('./config/connection');
 const inquirer = require('inquirer');
-//var consoleTable = require('console-table');
-const { table } = require('table');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -22,7 +20,6 @@ const choiceList = [{
 },
 ];
 
-
 function init() {
   inquirer
     .prompt(choiceList)
@@ -32,7 +29,7 @@ function init() {
         sequelize.query('SELECT name, id FROM department')
         .then(([rows,fields]) => {
           
-          console.log(fields);
+          console.table(fields);
         })
         .catch(console.log());
 
@@ -46,20 +43,19 @@ function init() {
         sequelize.query('SELECT title, r.id, dt.name, salary FROM role r JOIN department dt ON r.department_id = dt.id')
         .then(([rows,fields]) => {
           
-          console.log(fields);
+          console.table(fields);
         })
         .catch(console.log());
         setTimeout(function(){init();},5000);
 
     } else if (response.choice === "view all employees") {
 
-      //funEngineer();
       //I am presented with a formatted table showing employee data, including employee ids, first names, last names, job 
       //titles, departments, salaries, and managers that the employees report to
       sequelize.query('SELECT e.id,first_name,last_name, r.title, dt.name, r.salary, e.manager_id FROM employee e, role r, department dt WHERE e.role_id=r.id AND r.department_id = dt.id')
         .then(([rows,fields]) => {
           
-          console.log(fields);
+          console.table(fields);
         })
         .catch(console.log());
       
@@ -69,25 +65,25 @@ function init() {
 
     //funEngineer();
     //I am prompted to enter the name of the department and that department is added to the database
-    setTimeout(function(){funEngineer();},5000);
+    setTimeout(function(){init();},5000);
 
 }else if (response.choice === "add a role") {
 
   //funEngineer();
   //I am prompted to enter the name, salary, and department for the role and that role is added to the database
-  setTimeout(function(){funEngineer();},5000);
+  setTimeout(function(){init();},5000);
 
 }else if (response.choice === "add an employee") {
 
   //funEngineer();
   //I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
-  setTimeout(function(){funEngineer();},5000);
+  setTimeout(function(){init();},5000);
 
 }else if (response.choice === "update an employee role") {
 
   //funEngineer();
   //I am prompted to select an employee to update and their new role and this information is updated in the database
-  setTimeout(function(){funEngineer();},5000);}
+  setTimeout(function(){init();},5000);}
 else {
         //exit
        process.exit(1);
