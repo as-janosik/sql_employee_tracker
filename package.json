@@ -1,0 +1,30 @@
+{
+  "name": "sql_employee_tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/as-janosik/sql_employee_tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/as-janosik/sql_employee_tracker/issues"
+  },
+  "homepage": "https://github.com/as-janosik/sql_employee_tracker#readme",
+  "dependencies": {
+    "console-table": "^0.1.2",
+    "console.table": "^0.10.0",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "inquirer": "^8.2.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.23.2",
+    "table": "^6.8.0"
+  }
+}
