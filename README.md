@@ -22,6 +22,8 @@
   ## Description of Project  
   Back end database CLI to view Department, Role and Employee data.  User is able to Create Department, Role and Employee. . User is able to update Employee Role.   
 
+  [Link to video](https://drive.google.com/file/d/1Am_hxaf_U_3QDpg45tmntPftGZQrbASw/view?usp=sharing)
+
   ## Installation Instructions  
   npm package with mySQL to connect  
 
