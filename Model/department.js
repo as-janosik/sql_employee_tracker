@@ -18,7 +18,7 @@ department.init(
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'book'
+      modelName: 'department'
     }
   );
   module.exports = department;
