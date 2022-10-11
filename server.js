@@ -8,8 +8,6 @@ const Engineer = require("./lib/Employee")
 //bring in model
 const dept = require("./Model/department");
 const { Router } = require('express');
-// const Intern = require("./Model/Role");
-// const Engineer = require("./Model/Employee");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -97,15 +95,6 @@ const updateRole = [{
   name: 'emp_up_role',
 },];
 
-// function addDept() {
-//   inquirer
-//     .prompt(departmentAdd)
-//     .then((response) => {
-//       const department = new DepartmentClass(response.id, response.name)
-//       return department;
-//     }
-//     );
-// };
 function init() {
   inquirer
     .prompt(choiceList)
@@ -164,12 +153,10 @@ function init() {
             })
 
           })
-
         //I am prompted to enter the name of the department and that department is added to the database
         setTimeout(function () { init(); }, 50000);
 
       } else if (response.choice === "add a role") {
-
 
         inquirer
           .prompt(roleAdd)
@@ -188,13 +175,10 @@ function init() {
             })
 
           })
-        //funEngineer();
         //I am prompted to enter the name, salary, and department for the role and that role is added to the database
         setTimeout(function () { init(); }, 50000);
 
       } else if (response.choice === "add an employee") {
-
-
 
         inquirer
           .prompt(employeeAdd)
@@ -213,34 +197,29 @@ function init() {
             })
 
           })
-        //funEngineer();
         //I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
         setTimeout(function () { init(); }, 50000);
 
       } else if (response.choice === "update an employee role") {
 
-
         inquirer
-        .prompt(updateRole)
-        .then((response) => {
-          console.log(response)
+          .prompt(updateRole)
+          .then((response) => {
+            console.log(response)
 
-          sequelize.query(`UPDATE employee SET role_id = ${response.emp_up_role} WHERE id = ${response.emp_up_id}`, (err, result) => {
-            if (err) {
-              res.status(400).json({ error: err.message });
-              return;
-            }
-            res.json({
-              message: 'success',
-              data: body
-            });
+            sequelize.query(`UPDATE employee SET role_id = ${response.emp_up_role} WHERE id = ${response.emp_up_id}`, (err, result) => {
+              if (err) {
+                res.status(400).json({ error: err.message });
+                return;
+              }
+              res.json({
+                message: 'success',
+                data: body
+              });
+            })
+
           })
 
-        })
-
-
-        
-        //funEngineer();
         //I am prompted to select an employee to update and their new role and this information is updated in the database
         setTimeout(function () { init(); }, 50000);
       }
